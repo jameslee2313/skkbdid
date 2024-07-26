@@ -1,0 +1,70 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Marry Me?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        #buttons {
+            position: relative;
+            width: 300px;
+            height: 100px;
+            margin-top: 20px;
+            left: 6vw;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <p>Will you marry me?</p>
+    <div id="buttons">
+        <button id="yesButton">Yes</button>
+        <button id="noButton" style="position: absolute; left: 125.751px; top: 47.7395px;">No</button>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('noButton');
+const yesButton = document.getElementById('yesButton');
+
+noButton.addEventListener('mouseover', () => {
+    const buttonContainer = document.getElementById('buttons');
+    const containerWidth = buttonContainer.offsetWidth;
+    const containerHeight = buttonContainer.offsetHeight;
+    const buttonWidth = noButton.offsetWidth;
+    const buttonHeight = noButton.offsetHeight;
+
+    let newLeft, newTop;
+
+    do {
+        newLeft = Math.random() * (containerWidth - buttonWidth);
+        newTop = Math.random() * (containerHeight - buttonHeight);
+    } while (Math.abs(newLeft - noButton.offsetLeft) < buttonWidth && Math.abs(newTop - noButton.offsetTop) < buttonHeight);
+
+    noButton.style.position = 'absolute';
+    noButton.style.left = `${newLeft}px`;
+    noButton.style.top = `${newTop}px`;
+});
+
+yesButton.addEventListener('click', () => {
+    alert('Yay! I love you too!');
+});
+
+
+
+
+
+
+
+    </script>
+
+
+</body></html>
